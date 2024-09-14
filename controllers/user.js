@@ -52,6 +52,15 @@ class UserController {
       next(error);
     }
   }
+
+  async current(req, res, next) {
+    try {
+      const { email, token } = req.user;
+      res.status(200).json({ email, token });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new UserController();
