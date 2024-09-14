@@ -1,3 +1,4 @@
 const validateBody = require('./validateBody');
+const isValidToken = require('./isValidToken');
 
-module.exports = { validateBody };
+module.exports = { validateBody, isValidToken };
