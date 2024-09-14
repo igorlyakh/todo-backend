@@ -7,6 +7,6 @@ const userRouter = require('express').Router();
 userRouter.post('/registration', validateBody(userSchema), UserController.registration);
 userRouter.post('/login', validateBody(userSchema), UserController.login);
 userRouter.get('/current', isValidToken, UserController.current);
-userRouter.post('/logout');
+userRouter.post('/logout', isValidToken, UserController.logout);
 
 module.exports = userRouter;
