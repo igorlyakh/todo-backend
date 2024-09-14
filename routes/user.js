@@ -4,12 +4,8 @@ const { validateBody } = require('../middleware');
 
 const userRouter = require('express').Router();
 
-userRouter.post(
-  '/registration',
-  validateBody(userSchema),
-  UserController.registration
-);
-userRouter.post('/login');
+userRouter.post('/registration', validateBody(userSchema), UserController.registration);
+userRouter.post('/login', validateBody(userSchema), UserController.login);
 userRouter.get('/current');
 userRouter.post('/logout');
 
