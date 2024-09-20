@@ -1,3 +1,4 @@
 const userSchema = require('./user');
+const taskSchema = require('./task');
 
-module.exports = { ...userSchema };
+module.exports = { ...userSchema, taskSchema };
