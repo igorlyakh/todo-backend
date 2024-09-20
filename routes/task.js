@@ -5,5 +5,6 @@ const { taskSchema } = require('../schemas');
 const taskRouter = require('express').Router();
 
 taskRouter.post('/', isValidToken, validateBody(taskSchema), TaskController.createTask);
+taskRouter.delete('/:id', isValidToken, TaskController.deleteTask);
 
 module.exports = taskRouter;
