@@ -1,8 +1,9 @@
 const { TaskController } = require('../controllers');
-const { isValidToken } = require('../middleware');
+const { isValidToken, validateBody } = require('../middleware');
+const { taskSchema } = require('../schemas');
 
 const taskRouter = require('express').Router();
 
-taskRouter.post('/', isValidToken, TaskController.createTask);
+taskRouter.post('/', isValidToken, validateBody(taskSchema), TaskController.createTask);
 
 module.exports = taskRouter;
