@@ -1,6 +1,10 @@
 const { HttpError } = require('../helpers');
 const { Task } = require('../models');
 
+// TODO: getAll(), updateComplete()
+
+//? getOne()
+
 class TaskController {
   async createTask(req, res, next) {
     try {
