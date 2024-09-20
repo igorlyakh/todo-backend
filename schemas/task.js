@@ -5,7 +5,7 @@ const taskSchema = Joi.object({
     'string.min': 'Заголовок должен быть не менее {#limit} символов.',
     'any.required': 'Заголовок обязателен для заполнения.',
   }),
-  description: Joi.string(),
+  description: Joi.string().max(32),
   isComplete: Joi.boolean(),
 });
 
