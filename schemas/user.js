@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const userSchema = Joi.object({
+const registrationSchema = Joi.object({
   email: Joi.string().min(6).required().messages({
     'string.min': 'Email должен быть не менее {#limit} символов.',
     'any.required': 'Email обязателен для заполнения.',
@@ -15,4 +15,15 @@ const userSchema = Joi.object({
   }),
 });
 
-module.exports = userSchema;
+const loginSchema = Joi.object({
+  email: Joi.string().min(6).required().messages({
+    'string.min': 'Email должен быть не менее {#limit} символов.',
+    'any.required': 'Email обязателен для заполнения.',
+  }),
+  password: Joi.string().min(6).required().messages({
+    'string.min': 'Пароль должен быть не менее {#limit} символов.',
+    'any.required': 'Пароль обязателен для заполнения.',
+  }),
+});
+
+module.exports = registrationSchema;

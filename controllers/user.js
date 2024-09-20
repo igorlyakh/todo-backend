@@ -46,6 +46,7 @@ class UserController {
       await User.findByIdAndUpdate(user._id, { token });
       res.status(200).json({
         email,
+        name: user.name,
         token,
       });
     } catch (error) {
