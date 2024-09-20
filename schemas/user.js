@@ -26,4 +26,4 @@ const loginSchema = Joi.object({
   }),
 });
 
-module.exports = registrationSchema;
+module.exports = { registrationSchema, loginSchema };
