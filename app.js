@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const { userRouter } = require('./routes');
+const { userRouter, taskRouter } = require('./routes');
 
 require('colors');
 require('dotenv').config();
@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/user', userRouter);
+app.use('/api/task', taskRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: 'Route not found!' });
