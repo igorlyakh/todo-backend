@@ -1,10 +1,6 @@
 const { HttpError } = require('../helpers');
 const { Task } = require('../models');
 
-// TODO: updateComplete()
-
-//? getOne()
-
 class TaskController {
   async createTask(req, res, next) {
     try {
@@ -44,7 +40,22 @@ class TaskController {
     }
   }
 
-  async setIsComplete(req, res, next) {}
+  async setIsComplete(req, res, next) {
+    try {
+      const { id } = req.params;
+      const result = await Task.findByIdAndUpdate(
+        id,
+        { isComplete: true },
+        { new: true }
+      );
+      if (!result) {
+        throw HttpError(404, 'Данная задача не найдена!');
+      }
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new TaskController();
