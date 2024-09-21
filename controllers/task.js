@@ -1,7 +1,7 @@
 const { HttpError } = require('../helpers');
 const { Task } = require('../models');
 
-// TODO: getAll(), updateComplete()
+// TODO: updateComplete()
 
 //? getOne()
 
@@ -29,7 +29,20 @@ class TaskController {
     }
   }
 
-  async getAll() {}
+  async getAll(req, res, next) {
+    try {
+      const { _id: owner } = req.user;
+      const { page = 1, limit = 10 } = req.query;
+      const skip = (page - 1) * 10;
+      const result = await Task.find({ owner }, '-owner', {
+        skip,
+        limit,
+      });
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new TaskController();
