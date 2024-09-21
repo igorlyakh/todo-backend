@@ -28,6 +28,8 @@ class TaskController {
       next(error);
     }
   }
+
+  async getAll() {}
 }
 
 module.exports = new TaskController();
