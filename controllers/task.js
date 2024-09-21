@@ -43,6 +43,8 @@ class TaskController {
       next(error);
     }
   }
+
+  async setIsComplete(req, res, next) {}
 }
 
 module.exports = new TaskController();
