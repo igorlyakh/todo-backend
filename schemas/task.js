@@ -12,4 +12,15 @@ const taskSchema = Joi.object({
   isComplete: Joi.boolean(),
 });
 
-module.exports = taskSchema;
+const updateTaskIsComplete = Joi.object({
+  isComplete: Joi.boolean().required().messages({
+    'any.required': 'Передайте значение поля!',
+    'boolean.base': 'Значение поля должно быть только true или false!',
+  }),
+})
+  .unknown(false)
+  .messages({
+    'object.unknown': 'Нельзя передавать дополнительные значения!',
+  });
+
+module.exports = { taskSchema, updateTaskIsComplete };

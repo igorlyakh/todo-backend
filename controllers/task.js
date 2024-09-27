@@ -43,11 +43,7 @@ class TaskController {
   async setIsComplete(req, res, next) {
     try {
       const { id } = req.params;
-      const result = await Task.findByIdAndUpdate(
-        id,
-        { isComplete: true },
-        { new: true }
-      );
+      const result = await Task.findByIdAndUpdate(id, req.body, { new: true });
       if (!result) {
         throw HttpError(404, 'Данная задача не найдена!');
       }
