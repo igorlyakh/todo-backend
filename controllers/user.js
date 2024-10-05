@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const { HttpError } = require('../helpers');
 const { User } = require('../models');
+const tokenService = require('../service');
 
 const { JWT_SECRET } = process.env;
 
@@ -16,9 +17,12 @@ class UserController {
         ...req.body,
         password: hashedPassword,
       });
+      const tokens = tokenService.generateToken({ id: result._id });
+      await tokenService.saveToken(result._id, tokens.refreshToken);
       res.status(201).json({
         id: result._id,
         email: result.email,
+        ...tokens,
       });
     } catch (error) {
       if (error.code === 11000) {
