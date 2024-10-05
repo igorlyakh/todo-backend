@@ -19,10 +19,14 @@ class UserController {
       });
       const tokens = tokenService.generateToken({ id: result._id });
       await tokenService.saveToken(result._id, tokens.refreshToken);
+      res.cookie('refreshToken', tokens.refreshToken, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      });
       res.status(201).json({
         id: result._id,
         email: result.email,
-        ...tokens,
+        accessToken: tokens.accessToken,
       });
     } catch (error) {
       if (error.code === 11000) {
