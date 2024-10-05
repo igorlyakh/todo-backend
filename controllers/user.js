@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const { HttpError } = require('../helpers');
 const { User } = require('../models');
-const tokenService = require('../service');
+const tokenService = require('../service/token-service');
 
 const { JWT_SECRET } = process.env;
 
