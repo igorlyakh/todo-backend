@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const { HttpError } = require('../helpers');
 const { User } = require('../models');
+// TODO: Сделать re-export сервиса!!!
 const tokenService = require('../service/token-service');
 
 const { JWT_SECRET } = process.env;

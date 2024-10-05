@@ -24,4 +24,5 @@ class TokenService {
   }
 }
 
+// TODO: Сделать re-export сервиса!!!
 module.exports = new TokenService();
